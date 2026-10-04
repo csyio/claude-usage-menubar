@@ -17,7 +17,20 @@ The UI is in Turkish.
 - Swift 5.10+ (Xcode or Command Line Tools)
 - Claude Code installed and logged in with a Claude subscription (Pro or Max)
 
-## Install
+## Download
+
+Download `ClaudeUsage-<version>-macos-universal.zip` from
+[Releases](https://github.com/csyio/claude-usage-menubar/releases), unzip it, and move
+`Claude Kullanım.app` to `~/Applications` or `/Applications`. The build runs on Apple Silicon and Intel.
+
+The app is ad-hoc signed, not notarized, so macOS blocks it on first launch. Either open
+System Settings → Privacy & Security and click "Open Anyway", or run:
+
+```sh
+xattr -dr com.apple.quarantine ~/Applications/"Claude Kullanım.app"
+```
+
+## Build from source
 
 ```sh
 git clone https://github.com/csyio/claude-usage-menubar.git
@@ -25,7 +38,8 @@ cd claude-usage-menubar
 make install     # builds, copies to ~/Applications, and launches
 ```
 
-Other targets: `make app` (build `build/Claude Kullanım.app` only), `make run`, `make clean`.
+Other targets: `make app` (build `build/Claude Kullanım.app` only), `make run`,
+`make release` (universal arm64 + x86_64 zip in `build/`), `make clean`.
 
 The app has no Dock icon. Enable "Girişte başlat" (launch at login) in the panel to start it automatically.
 
